@@ -1,4 +1,6 @@
-import ref from "../assets/DOMAssets"
+function ref(identifier){
+    return document.querySelector(identifier)
+}
 
 let h1 = ref("#about")
 
