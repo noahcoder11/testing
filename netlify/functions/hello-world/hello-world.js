@@ -11,7 +11,7 @@ app.use(bodyParser)
 
 // Create routes
 app.get("/", (req, res) => {
-  res.send("Success!")
+  res.json({ message: "Success!"})
 })
 
 module.exports.handler = serverless(app)
