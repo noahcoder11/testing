@@ -14,7 +14,11 @@ app.use(cors())
 // Define routes
 router.get("/", (req, res) => {
   res.send("test")
-});
+})
+
+router.get("/testdata", (req, res) => {
+  res.json({ data: "test" })
+})
 
 app.use("/.netlify/functions/api", router);
 
