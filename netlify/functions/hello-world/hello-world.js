@@ -11,4 +11,4 @@ app.get("/", (req, res) => {
   res.send("Success!")
 })
 
-module.exports = { app }
+exports.handler = app
