@@ -1,20 +1,14 @@
-// Imports
-const serverless = require("serverless-http")
-const bodyParser = require("body-parser")
-const express = require("express")
-const cors = require("cors")
+const express = require("express");
+const serverless = require("serverless-http");
 
-// Initialize app
-const app = express()
-const router = express.Router()
-app.use(cors())
-app.use(bodyParser)
+const app = express();
+const router = express.Router();
 
-// Create routes
 router.get("/", (req, res) => {
-  res.json({ message: "Success!"})
-})
+  res.send("test")
+});
 
-app.use("/.netlify/functions/hello-world", router)
 
-module.exports.handler = serverless(app)
+app.use("/.netlify/functions/hello-world", router);
+
+module.exports.handler = serverless(app);
