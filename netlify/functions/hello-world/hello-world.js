@@ -6,12 +6,15 @@ const cors = require("cors")
 
 // Initialize app
 const app = express()
+const router = express.Router()
 app.use(cors())
 app.use(bodyParser)
 
 // Create routes
-app.get("/", (req, res) => {
+router.get("/", (req, res) => {
   res.json({ message: "Success!"})
 })
+
+app.use("/.netlify/functions/hello-world", router)
 
 module.exports.handler = serverless(app)
