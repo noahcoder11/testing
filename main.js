@@ -1,7 +1,7 @@
-var a = document.querySelector("#_")
-var a2 = document.querySelector("#_testdata")
+var a = document.querySelector("#a1")
+var a2 = document.querySelector("#a2")
 
 a.href = window.location + "/.netlify/functions/api"
-a.href = window.location + "/.netlify/functions/api/testdata"
+a2.href = window.location + "/.netlify/functions/api/testdata"
 
 console.log(window.location)
