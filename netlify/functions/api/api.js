@@ -47,8 +47,9 @@ router.get("/", (req, res) => {
 })
 
 router.get("/search/:searchString", (req, res) => {
-  json_data = searchBooks(req.params.searchString)
-  res.json(json_data)
+  searchBooks(req.params.searchString).then((data) => {
+    res.json(data)
+  })
 })
 
 app.use("/.netlify/functions/api", router);
