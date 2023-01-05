@@ -35,6 +35,7 @@ async function searchBooks(searchString){
 
     resp.on('end', () => {
       _json = JSON.parse(data)
+      console.log(_json)
     })
   })
 
