@@ -1,5 +1,5 @@
 // Imports
-import fetch from "node-fetch"
+import("node-fetch")
 
 const serverless = require("serverless-http")
 const jwt = require("jsonwebtoken")
