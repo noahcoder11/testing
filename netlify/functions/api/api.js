@@ -22,13 +22,11 @@ const router = express.Router();
 // Use CORS
 app.use(cors())
 
-// Define routes
-router.get("/", (req, res) => {
-  res.send("test")
-})
 
-router.get("/testdata", (req, res) => {
-  https.get(`https://www.googleapis.com/books/v1/volumes?q=mistborn`, (resp) => {
+async function searchBooks(searchString){
+  var _json = {}
+
+  await https.get(`https://www.googleapis.com/books/v1/volumes?q=${searchString}`, (resp) => {
     let data = ''
 
     resp.on('data', (chunk) => {
@@ -36,9 +34,21 @@ router.get("/testdata", (req, res) => {
     })
 
     resp.on('end', () => {
-      res.json(JSON.parse(data))
+      _json = JSON.parse(data)
     })
   })
+
+  return json
+}
+
+// Define routes
+router.get("/", (req, res) => {
+  res.send("test")
+})
+
+router.get("/search/:searchString", (req, res) => {
+  json_data = searchBooks(req.params.searchString)
+  res.json(json_data)
 })
 
 app.use("/.netlify/functions/api", router);
