@@ -23,13 +23,13 @@ app.use(cors())
 
 // Define routes
 router.get("/", (req, res) => {
-  const token = generateAccessToken({ username: "testuser" })
-
   res.json(token)
 })
 
 router.get("/testdata", (req, res) => {
-  res.json({ data: "test" })
+  fetch(`https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=${process.env.GOOGLE_API_KEY}`).then((data) => {
+    res.send(data)
+  })
 })
 
 app.use("/.netlify/functions/api", router);
