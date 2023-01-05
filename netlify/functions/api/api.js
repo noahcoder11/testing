@@ -22,13 +22,11 @@ const router = express.Router();
 // Use CORS
 app.use(cors())
 
-// Define routes
-router.get("/", (req, res) => {
-  res.send("test")
-})
 
-router.get("/testdata", (req, res) => {
-  https.get(`https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=${ process.env.GOOGLE_API_KEY }`, (resp) => {
+async function searchBooks(searchString){
+  var _json = {}
+
+  await https.get(`https://www.googleapis.com/books/v1/volumes?q=${searchString}`, (resp) => {
     let data = ''
 
     resp.on('data', (chunk) => {
@@ -36,8 +34,22 @@ router.get("/testdata", (req, res) => {
     })
 
     resp.on('end', () => {
-      res.json(JSON.parse(data))
+      _json = JSON.parse(data)
+      console.log(_json)
     })
+  })
+
+  return _json
+}
+
+// Define routes
+router.get("/", (req, res) => {
+  res.send("test")
+})
+
+router.get("/search/:searchString", (req, res) => {
+  searchBooks(req.params.searchString).then((data) => {
+    res.json(data)
   })
 })
 
