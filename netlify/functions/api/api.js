@@ -23,7 +23,7 @@ app.use(cors())
 
 // Define routes
 router.get("/", (req, res) => {
-  res.json("test")
+  res.send("test")
 })
 
 router.get("/testdata", (req, res) => {
