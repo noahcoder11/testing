@@ -5,6 +5,7 @@ const express = require("express")
 const dotenv = require("dotenv")
 const https = require("https")
 const cors = require("cors")
+const { response } = require("express")
 
 // Config dotenv
 dotenv.config()
@@ -27,7 +28,17 @@ router.get("/", (req, res) => {
 })
 
 router.get("/testdata", (req, res) => {
-  res.send("test")
+  https.get(`https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=${ process.env.GOOGLE_API_KEY }`, (resp) => {
+    let data = ''
+
+    resp.on('data', (chunk) => {
+      data += chunk;
+    })
+
+    resp.on('end', () => {
+      res.send(JSON.parse(data))
+    })
+  })
 })
 
 app.use("/.netlify/functions/api", router);
