@@ -28,7 +28,7 @@ router.get("/", (req, res) => {
 })
 
 router.get("/testdata", (req, res) => {
-  https.get(`https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes`, (resp) => {
+  https.get(`https://www.googleapis.com/books/v1/volumes?q=mistborn`, (resp) => {
     let data = ''
 
     resp.on('data', (chunk) => {
