@@ -36,7 +36,7 @@ router.get("/testdata", (req, res) => {
     })
 
     resp.on('end', () => {
-      res.send(JSON.parse(data))
+      res.json(JSON.parse(data))
     })
   })
 })
