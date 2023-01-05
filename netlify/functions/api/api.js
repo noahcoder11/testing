@@ -8,11 +8,11 @@ const cors = require("cors")
 
 // Config dotenv
 dotenv.config()
-
+/*
 // Generate token function
 function generateAccessToken(username){
   return jwt.sign(username, process.env.TOKEN_SECRET, { expiresIn: '1800s' })
-}
+}*/
 
 // Initialize express app and express router
 const app = express();
@@ -23,7 +23,7 @@ app.use(cors())
 
 // Define routes
 router.get("/", (req, res) => {
-  res.send(generateAccessToken("testuser"))
+  res.send(process.env.TOKEN_SECRET)
 })
 
 router.get("/testdata", (req, res) => {
