@@ -28,7 +28,7 @@ router.get("/", (req, res) => {
 })
 
 router.get("/testdata", (req, res) => {
-  https.get(`https://www.googleapis.com/books/v1/volumes?q=mistborn`, (resp) => {
+  https.get(`https://www.googleapis.com/books/v1/volumes?q=mistborn&key=${ process.env.GOOGLE_API_KEY }`, (resp) => {
     let data = ''
 
     resp.on('data', (chunk) => {
