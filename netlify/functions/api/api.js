@@ -1,6 +1,5 @@
 // Imports
 const serverless = require("serverless-http")
-const bodyParser = require("body-parser")
 const fetch = require('node-fetch')
 const jwt = require("jsonwebtoken")
 const express = require("express")
