@@ -1,8 +1,7 @@
 // Imports
-import("node-fetch")
-
 const serverless = require("serverless-http")
 const jwt = require("jsonwebtoken")
+const fetch = require('node-fetch')
 const express = require("express")
 const dotenv = require("dotenv")
 const cors = require("cors")
