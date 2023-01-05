@@ -38,7 +38,7 @@ async function searchBooks(searchString){
     })
   })
 
-  return json
+  return _json
 }
 
 // Define routes
