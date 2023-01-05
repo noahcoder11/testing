@@ -1,7 +1,6 @@
 // Imports
 const serverless = require("serverless-http")
 const jwt = require("jsonwebtoken")
-const fetch = require('node-fetch')
 const express = require("express")
 const dotenv = require("dotenv")
 const cors = require("cors")
@@ -27,9 +26,7 @@ router.get("/", (req, res) => {
 })
 
 router.get("/testdata", (req, res) => {
-  fetch(`https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=${process.env.GOOGLE_API_KEY}`).then((data) => {
-    res.send(data)
-  })
+  res.send("test")
 })
 
 app.use("/.netlify/functions/api", router);
