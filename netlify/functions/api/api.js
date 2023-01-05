@@ -3,6 +3,7 @@ const serverless = require("serverless-http")
 const jwt = require("jsonwebtoken")
 const express = require("express")
 const dotenv = require("dotenv")
+const https = require("https")
 const cors = require("cors")
 
 // Config dotenv
