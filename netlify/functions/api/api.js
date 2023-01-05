@@ -23,9 +23,9 @@ app.use(cors())
 
 // Define routes
 router.get("/", (req, res) => {
-  const token = generateAccessToken("testuser")
+  const token = generateAccessToken({ username: "testuser" })
 
-  res.send("test")
+  res.json(token)
 })
 
 router.get("/testdata", (req, res) => {
